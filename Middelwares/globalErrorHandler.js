@@ -1,4 +1,4 @@
-import AppError from "../utils/appError.js";
+import AppError from "../Utils/appError.js";
 
 export const globalError = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;

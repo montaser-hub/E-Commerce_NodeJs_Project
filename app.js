@@ -36,6 +36,8 @@ app.use(
       "http://localhost:3001",
       "http://localhost:3002",
       "http://localhost:5000",
+      // The deployed front end, e.g. FRONTEND=https://shop.example.com
+      ...(process.env.FRONTEND ? [process.env.FRONTEND] : []),
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,

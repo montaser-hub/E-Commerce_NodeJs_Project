@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import ProductModel from "./productModel.js";
-import AppError from "../utils/appError.js";
+import AppError from "../Utils/appError.js";
 
 const orderSchema = new mongoose.Schema(
   {
@@ -80,6 +80,9 @@ const orderSchema = new mongoose.Schema(
     paypalOrderId: {
       type: String,
       unique: true,
+      // Cash orders have no PayPal id; without sparse, the second one would
+      // collide with the first on the unique index (both count as null).
+      sparse: true,
     },
   },
   { timestamps: true, versionKey: false }

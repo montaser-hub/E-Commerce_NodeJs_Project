@@ -9,7 +9,8 @@ import {
 const router = express.Router();
 
 router.post("/paypal/webhook", express.json(), paypalWebhook);
-router.post("/paypal/:orderId", protect, createPayPalPayment);
+// "/paypal/capture" must come before "/paypal/:orderId", or Express treats "capture" as an order id.
 router.post("/paypal/capture", protect, capturePayPalPayment);
+router.post("/paypal/:orderId", protect, createPayPalPayment);
 
 export default router;

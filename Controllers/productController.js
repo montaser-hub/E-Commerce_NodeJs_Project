@@ -57,7 +57,7 @@ const createProduct = catchError(async (req, res) => {
 });
 
 // Update product
-const updateProduct = catchError(async (req, res) => {
+const updateProduct = catchError(async (req, res, next) => {
   const updatedProduct = await ProductModel.findByIdAndUpdate(
     req.params.id,
     req.body,
@@ -74,11 +74,6 @@ const deleteProduct = catchError(async (req, res, next) => {
   const deletedProduct = await ProductModel.findByIdAndDelete(req.params.id);
   if (!deletedProduct) return next(new AppError("Product not found", 404));
   res.json({ message: "Product deleted" });
-  const deleteProduct = catchError(async (req, res) => {
-    const deletedProduct = await ProductModel.findByIdAndDelete(req.params.id);
-    if (!deletedProduct) return next(new AppError("Product not found", 404));
-    res.json({ message: "Product deleted" });
-  });
 });
 
 export {

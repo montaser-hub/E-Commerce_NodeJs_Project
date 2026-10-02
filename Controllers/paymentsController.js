@@ -84,7 +84,7 @@ export const createPayPalPayment = catchError(async (req, res, next) => {
           },
         ],
         application_context: {
-          return_url: `${process.env.FRONTEND}/order-confirmation/:${order._id}`,
+          return_url: `${process.env.FRONTEND}/order-confirmation/${order._id}`,
           cancel_url: `${process.env.FRONTEND}/payments/cancel`,
         },
       }),

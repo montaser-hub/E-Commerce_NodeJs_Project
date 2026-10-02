@@ -76,6 +76,7 @@ const getOrders = catchError(async (req, res, next) => {
     .skip(skip)
     .limit(limit)
     .sort(sort)
+    .populate("user", "name email")
     .populate("cartItems.product", "name price images");
 
   const total = await Order.countDocuments(filter);

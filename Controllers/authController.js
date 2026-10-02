@@ -29,7 +29,10 @@ export const signup = catchError(async (req, res) => {
     "host"
   )}/users/confirm/${verifyToken}`;
   // console.log(verifyURL);
-  sendEmail(verifyURL, newUser.email);
+  // Don't await: signup shouldn't wait on (or fail because of) the mail server.
+  sendEmail(verifyURL, newUser.email).catch((err) =>
+    console.error("Verification email failed:", err.message)
+  );
 
   res.status(201).json({
     status: "success",
