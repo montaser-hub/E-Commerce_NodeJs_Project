@@ -4,9 +4,10 @@ const swaggerOptions = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "My Express API",
+      title: "Woody Furniture Store API",
       version: "1.0.0",
-      description: "A sample API for demonstration purposes",
+      description:
+        "REST API for the Woody furniture store: accounts, catalogue, cart, wishlist, orders and PayPal payments. Sign in with POST /users/signin; the session is an httpOnly cookie.",
     },
     servers: [
       {
